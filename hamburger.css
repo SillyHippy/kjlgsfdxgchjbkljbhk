@@ -137,13 +137,20 @@
     display: block;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .mobile-nav-container {
+    display: none;
+  }
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
-    max-width: 100%; /* Ensure body doesn't exceed viewport width */
-  }
-  
-  html, body {
-    overflow-y: auto !important; /* Override inline style, allow vertical scroll when needed */
-  }
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  max-width: 100%; /* Ensure body doesn't exceed viewport width */
+}
+
+html, body {
+  overflow-y: auto !important; /* Override inline style, allow vertical scroll when needed */
+}
