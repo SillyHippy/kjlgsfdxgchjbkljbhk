@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('is-active');
             mobileMenu.classList.toggle('is-active');
+            console.log('Hamburger clicked!'); // Debugging statement
         });
+    } else {
+        console.log('Hamburger or mobile menu not found!'); // Debugging statement
     }
 });
