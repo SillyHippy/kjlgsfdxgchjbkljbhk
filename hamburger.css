@@ -154,3 +154,24 @@ body {
 html, body {
   overflow-y: auto !important; /* Override inline style, allow vertical scroll when needed */
 }
+/* Add these new rules to your existing CSS file */
+
+.mobile-nav-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure it's above other elements */
+  }
+  
+  /* Make sure mobile menu appears on top of everything */
+  .mobile-menu.is-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+    display: flex !important;
+  }
+  
+  /* Force visibility for debugging */
+  .hamburger {
+    background-color: rgba(200, 200, 200, 0.5); /* Light gray background for visibility */
+  }
