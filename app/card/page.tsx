@@ -1,12 +1,40 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 export default function CardPage() {
+  const [showShareMenu, setShowShareMenu] = useState(false);
+
   return (
-    <div className="min-h-screen bg-[#0B132B] flex items-center justify-center p-4">
-      <div className="bg-[#1C2541] rounded-[15px] p-6 max-w-[420px] w-full shadow-lg" itemScope itemType="https://schema.org/Person">
+    <div className="min-h-screen bg-[#0B132B] flex items-center justify-center p-4 relative">
+      <div className="bg-[#1C2541] rounded-[15px] p-6 max-w-[420px] w-full shadow-lg relative" itemScope itemType="https://schema.org/Person">
+        {/* Share Button */}
+        <button 
+          className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition" 
+          onClick={() => setShowShareMenu(!showShareMenu)}
+        >
+          <Image src="/icons/share.svg" alt="Share" width={24} height={24} />
+        </button>
+
+        {/* Share Menu */}
+        {showShareMenu && (
+          <div className="absolute top-12 right-4 bg-white p-4 rounded-lg shadow-lg w-64">
+            <h3 className="text-center font-bold mb-2">Share Just Legal Solutions</h3>
+            <ul className="space-y-2">
+              <li>
+                <button className="w-full bg-gray-200 p-2 rounded" onClick={() => navigator.clipboard.writeText(window.location.href)}>Copy Link</button>
+              </li>
+              <li>
+                <a href={`sms:?&body=Check%20out%20Just%20Legal%20Solutions:%20${window.location.href}`} className="block text-center bg-green-500 text-white p-2 rounded">Share via Text</a>
+              </li>
+              <li>
+                <a href={`mailto:?subject=Check%20this%20out!&body=${window.location.href}`} className="block text-center bg-blue-500 text-white p-2 rounded">Share via Email</a>
+              </li>
+            </ul>
+          </div>
+        )}
+
         {/* Top Profile Section */}
         <div className="flex items-center mb-4">
           <div className="w-[90px] h-[90px] bg-white rounded-full flex-shrink-0 mr-4 flex items-center justify-center overflow-hidden">
@@ -37,81 +65,22 @@ export default function CardPage() {
           </div>
         </div>
 
-        {/* Button Section */}
+        {/* Contact Buttons */}
         <div className="space-y-3 mt-6">
-          {/* Contact Details Button */}
-          <a href="/contact-details.vcf" download className="relative flex items-center justify-between bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors group">
-            <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-[65px] h-[65px]">
-              <Image
-                src="/landingpage/icons/contact.svg"
-                alt="Contact"
-                width={65}
-                height={65}
-                className="w-full h-full"
-              />
-            </div>
-            <span className="pl-12 text-base">Download my contact details</span>
-            <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+          <a href="/contact-details.vcf" download className="block bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors">
+            Download my contact details
           </a>
-
-          {/* Email Button */}
-          <a href="mailto:Info@JustLegalSolutions.org" itemProp="email" className="relative flex items-center justify-between bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors group">
-            <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-[60px] h-[60px]">
-              <Image
-                src="/landingpage/icons/mail.svg"
-                alt="Email"
-                width={60}
-                height={60}
-                className="w-full h-full"
-              />
-            </div>
-            <span className="pl-12 text-base">Email</span>
-            <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+          <a href="mailto:Info@JustLegalSolutions.org" itemProp="email" className="block bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors">
+            Email
           </a>
-
-          {/* Phone Button */}
-          <a href="tel:+15393676832" itemProp="telephone" className="relative flex items-center justify-between bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors group">
-            <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-[56px] h-[66px]">
-              <Image
-                src="/landingpage/icons/phone.svg"
-                alt="Phone"
-                width={56}
-                height={66}
-                className="w-full h-full"
-              />
-            </div>
-            <span className="pl-12 text-base">Call</span>
-            <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+          <a href="tel:+15393676832" itemProp="telephone" className="block bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors">
+            Call
           </a>
-
-          {/* Calendar Button */}
-          <a href="/card/calendar" className="relative flex items-center justify-between bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors group">
-            <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-[62px] h-[62px]">
-              <Image
-                src="/landingpage/icons/calendar-reminder-icon.svg"
-                alt="Calendar"
-                width={62}
-                height={62}
-                className="w-full h-full"
-              />
-            </div>
-            <span className="pl-12 text-base">Add a Reminder</span>
-            <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+          <a href="/card/calendar" className="block bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors">
+            Add a Reminder
           </a>
-
-          {/* Website Button */}
-          <a href="https://justlegalsolutions.org" itemProp="url" className="relative flex items-center justify-between bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors group">
-            <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-[65px] h-[65px]">
-              <Image
-                src="/landingpage/icons/website1.svg"
-                alt="Website"
-                width={65}
-                height={65}
-                className="w-full h-full"
-              />
-            </div>
-            <span className="pl-12 text-base">Website</span>
-            <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+          <a href="https://justlegalsolutions.org" itemProp="url" className="block bg-[#2D3748] text-white p-5 rounded-lg hover:bg-[#4A5568] transition-colors">
+            Website
           </a>
         </div>
       </div>
