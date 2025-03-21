@@ -1,12 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  eslint: {
-    ignoreDuringBuilds: true,
+  images: {
+    unoptimized: true,
+    domains: ['ext.same-assets.com', 'same-assets.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ext.same-assets.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'same-assets.com',
+      },
+    ],
   },
-  images: { unoptimized: true },
-  // Add trailing slash to match traditional .html behavior
+  reactStrictMode: false,
+  output: 'export',
   trailingSlash: true,
+  distDir: 'out',
 };
 
 module.exports = nextConfig;

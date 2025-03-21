@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wehmeyer Process Service, Inc. | 918-638-2837</title>
+  <meta name="description" content="Wehmeyer Process Service, Inc. is a licensed Tulsa, OK process service agency serving clients nationwide since 1985.">
+  <style>
+    /* Reset and Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: #3182ce;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    #page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Header */
+    header {
+      background-color: #000;
+      color: white;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      max-width: 250px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #e2e8f0;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem 0;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .service-card img {
+      max-width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Info Section */
+    .info-section {
+      background-color: #f0f0f0;
+      padding: 3rem 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    /* Call Now Button */
+    .call-now {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #3182ce;
+      color: white;
+      text-align: center;
+      padding: 0.75rem;
+      font-weight: 600;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .call-now {
+        display: block;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="page-container">
+    <header>
+      <div class="container header-content">
+        <img src="public/images/logo.png" alt="Wehmeyer Process Service, Inc." class="logo">
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Wehmeyer Process Service</a></li>
+            <li><a href="/services">Our Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>SERVING YOU BY SERVING OTHERS</h1>
+          <p>Wehmeyer Process Service, Inc. is a licensed Tulsa, OK process service agency serving clients nationwide since 1985. With over 40 years of experience, Wehmeyer Process Service is committed to service, value and customer satisfaction.</p>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="services-grid">
+          <div class="service-card">
+            <img src="public/images/usa-map.png" alt="USA Map">
+            <h3>Local & Nationwide Service</h3>
+            <p>Wehmeyer Process Service, Inc. delivers process for clients in Oklahoma and nationwide.</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/post-office.jpg" alt="Post Office">
+            <h3>Postal Search & Updates</h3>
+            <p>We always go the extra mile to locate a current address. Your summons is in good hands.</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/notary.jpg" alt="Notary">
+            <h3>Oklahoma Notary Public</h3>
+            <p>Our in-house notary service helps us complete your job quickly and efficiently every time.</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/court-filings.jpg" alt="Court Filings">
+            <h3>Local Court Filings</h3>
+            <p>Our full service process service agency offers local court filing services. We aim to please.</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/court-records.jpg" alt="Court Records">
+            <h3>Court Records Research</h3>
+            <p>When you need a records search and document retrieval quickly, Wehmeyer is here for you.</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/stake-out.jpg" alt="Stake Out">
+            <h3>Stake Out Services</h3>
+            <p>Is your defendant avoiding service? Don't give up. Let Wehmeyer Process Service help. We get the job done.</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/courier.jpg" alt="Courier Services">
+            <h3>Courier Services</h3>
+            <p>Need delivery fast? Ask about Our Rush Courier Service. We can help... and we're always on time!</p>
+          </div>
+
+          <div class="service-card">
+            <img src="public/images/satisfaction.jpg" alt="Satisfaction Guaranteed">
+            <h3>Satisfaction Guaranteed</h3>
+            <p>Michael & Jamie Wehmeyer have been committed to excellence and customer satisfaction since 1985.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <div class="container">
+          <div class="info-grid">
+            <div>
+              <h3>State of the Art Job Tracking</h3>
+              <p>With ServeManager GPS tracking, we always manage your job with accuracy, speed and efficiency.</p>
+            </div>
+
+            <div>
+              <h3>National Serve Now Member</h3>
+              <p>ServeNow process servers have been pre-screened and vetted to verify experience and qualifications.</p>
+            </div>
+
+            <div>
+              <h3>For Your Convenience...</h3>
+              <p>We accept Visa, MasterCard and Discover. Send payments by mail to: 3748 S Fulton Ave Tulsa, OK 74135</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <p>At Wehmeyer Process Service, Inc. we are licensed and bonded and maintain a current knowledge of all applicable laws, so you are assured the best service available. And with our competitive pricing, we will match or beat any competitor's price. We want to be your process server.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© Wehmeyer Process Service, Inc. Designed by <a href="https://netsolutionstoday.com" target="_blank" rel="noopener noreferrer">Net Solutions Today</a></p>
+      </div>
+    </footer>
+
+    <div class="call-now">
+      <a href="tel:918-638-2837" style="color: white; display: flex; align-items: center; justify-content: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        Call Now
+      </a>
+    </div>
+  </div>
+</body>
+</html>
