@@ -1,0 +1,21 @@
+{
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist",
+  "routes": [
+    {
+      "pattern": "/**",
+      "originalPath": "/**",
+      "feature": "SPA"
+    }
+  ],
+  "cacheControl": [
+    {
+      "pattern": "/assets/*",
+      "value": "public,max-age=31536000,immutable"
+    },
+    {
+      "pattern": "/images/*",
+      "value": "public,max-age=31536000,immutable"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Cloudflare Pages configuration
+name = "yourserved-clone"
+compatibility_date = "2023-12-01"
+
+[build]
+command = "bun run build"
+upload.format = "directory"
+output_directory = "dist"
+
+[site]
+bucket = "./dist"
+
+[env.production]
+route = "*yourserved-clone.pages.dev/*"
+
+[build.environment]
+NODE_VERSION = "18"
