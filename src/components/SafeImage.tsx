@@ -21,10 +21,11 @@ export default function SafeImage(props: ImageProps) {
           height: typeof props.height === 'number' ? `${props.height}px` : props.height,
           backgroundColor: '#f0f0f0'
         }}
+        aria-label={props.alt as string || 'Image placeholder'}
       />
     );
   }
 
-  // Once on the client, render the actual Image component
-  return <Image {...props} />;
+  // Once on the client, render the actual Image component with all props
+  return <Image {...props} alt={props.alt || ''} />;
 }
