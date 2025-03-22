@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import SafeImage from '@/components/SafeImage';
+import SafeImage from '../../components/SafeImage';
 
 export default function AboutPage() {
   return (

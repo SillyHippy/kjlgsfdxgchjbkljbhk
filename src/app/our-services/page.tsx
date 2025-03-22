@@ -1,6 +1,6 @@
 'use client'
 
-import SafeImage from '@/components/SafeImage';
+import SafeImage from '../../components/SafeImage';
 
 export default function ServicesPage() {
   return (

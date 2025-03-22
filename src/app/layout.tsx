@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import MobileCallButton from "@/components/MobileCallButton";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import MobileCallButton from "../components/MobileCallButton";
 import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {

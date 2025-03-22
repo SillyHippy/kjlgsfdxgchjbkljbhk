@@ -1,7 +1,7 @@
 'use client'
 
-import ServiceBox from '@/components/ServiceBox';
-import SafeImage from '@/components/SafeImage';
+import ServiceBox from '../components/ServiceBox';
+import SafeImage from '../components/SafeImage';
 
 export default function Home() {
   return (
