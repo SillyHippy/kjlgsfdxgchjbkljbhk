@@ -1,0 +1,13 @@
+[build]
+command = "bun run build"
+[build.upload]
+format = "directory"
+directory = ".next"
+
+[site]
+bucket = ".next"
+entry-point = "."
+
+[env.production]
+name = "yourserved-clone"
+workers_dev = true

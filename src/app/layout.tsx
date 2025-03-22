@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import MobileCallButton from "../components/MobileCallButton";
-import { unstable_noStore as noStore } from "next/cache";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import CallNowButton from "@/components/layout/call-now-button";
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-open-sans'
+});
 
 export const metadata: Metadata = {
   title: "Wehmeyer Process Service, Inc. 918-638-2837",
@@ -15,12 +21,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // This prevents caching to help with hydration issues
-  noStore();
-
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="en">
+      <body className={openSans.className}>
         <div id="page-container">
           <Header />
           <div id="et-main-area">
@@ -30,7 +33,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </div>
-        <MobileCallButton />
+        <CallNowButton />
       </body>
     </html>
   );

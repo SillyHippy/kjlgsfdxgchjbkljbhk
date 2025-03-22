@@ -1,56 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 196 77% 40%;  /* Wehmeyer blue */
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 196 77% 40%;  /* Wehmeyer blue */
-  --radius: 0.5rem;
-}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 194 69% 44%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 194 69% 44%;
+    --radius: 0.5rem;
+  }
 
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 194 69% 44%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 194 69% 44%;
+  }
 }
 
 @layer base {
@@ -59,65 +55,51 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium;
   }
 }
 
-/* Custom styles for the Wehmeyer site */
-.callnow_area {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #319ecb;
-  text-align: center;
-  padding: 10px 0;
-  z-index: 9999;
-  display: none;
-}
-
-.callnow_area a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-@media (max-width: 768px) {
-  .callnow_area {
-    display: block;
+@layer components {
+  .main-nav {
+    @apply flex items-center justify-between;
   }
-}
 
-.featured-box2 {
-  margin-bottom: 15px;
-  font-weight: 600;
-}
+  .nav-link {
+    @apply text-white hover:text-primary-foreground px-4 py-2;
+  }
 
-.mm-home-box {
-  padding: 30px 0;
-}
+  .active-nav-link {
+    @apply text-primary px-4 py-2;
+  }
 
-.mm-home-box h3 {
-  color: #333;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+  .featured-box {
+    @apply bg-white p-6 rounded-md shadow-sm text-center;
+  }
 
-.mm-home-box p {
-  color: #666;
-  font-size: 1rem;
-}
+  .featured-box h3 {
+    @apply text-xl font-semibold mb-2;
+  }
 
-.mm-about-intro-text {
-  padding: 30px 0;
-  text-align: center;
-  font-size: 1.75rem;
-  font-weight: bold;
-}
+  .featured-box p {
+    @apply text-muted-foreground;
+  }
 
-.mm-cta-box-h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #188ab6;
+  .footer-bottom {
+    @apply bg-black text-white py-4;
+  }
+
+  .call-now-button {
+    @apply fixed bottom-0 left-0 right-0 bg-primary text-white py-3 text-center lg:hidden;
+  }
+
+  .heading-desc {
+    @apply text-lg mt-2 max-w-3xl mx-auto;
+  }
+
+  .container {
+    @apply px-4 md:px-6 max-w-7xl mx-auto;
+  }
 }
