@@ -2,19 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'ext.same-assets.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    // Disable image optimization in production for better cross-platform compatibility
     unoptimized: process.env.NODE_ENV === 'production',
   },
-  experimental: {
-    serverMinification: false,
-  },
+  // Only include experimental features if needed in development
+  ...(process.env.NODE_ENV !== 'production' && {
+    experimental: {
+      serverMinification: false,
+    }
+  }),
 };
 
 export default nextConfig;
