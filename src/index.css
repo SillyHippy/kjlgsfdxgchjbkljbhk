@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Open Sans', sans-serif;
+    @apply text-secondary;
+  }
+
+  body {
+    @apply bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 max-w-7xl;
+  }
+
+  .btn {
+    @apply inline-block px-6 py-3 font-semibold transition-colors duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-opacity-90;
+  }
+
+  .call-now-btn {
+    @apply fixed bottom-0 left-0 right-0 bg-primary text-white text-center py-3 md:hidden z-50;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 hover:text-primary transition-colors duration-300;
+  }
+
+  .nav-link-active {
+    @apply text-primary;
+  }
+
+  .section {
+    @apply py-12;
+  }
+
+  .service-box {
+    @apply text-center p-4 mb-8;
+  }
+
+  .service-box h3 {
+    @apply mb-2;
+  }
+
+  .service-box p {
+    @apply text-accent;
+  }
+
+  .footer {
+    @apply bg-dark text-white py-4;
+  }
+}

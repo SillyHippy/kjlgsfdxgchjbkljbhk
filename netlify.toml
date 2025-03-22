@@ -1,19 +1,23 @@
 [images]
-  remote_images = [
-    "https://ext.same-assets.com/**"
-  ]
+  remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
   command = "bun run build"
-  publish = ".next"
+  publish = "dist"
 
-[build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
+# Redirects for SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Headers for caching and optimizing performance
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

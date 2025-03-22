@@ -1,8 +1,0 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "bun run build",
-  "outputDirectory": ".next",
-  "images": {
-    "domains": ["ext.same-assets.com"]
-  }
-}

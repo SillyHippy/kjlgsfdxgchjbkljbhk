@@ -1,58 +1,50 @@
-# YourServed Clone
+# React + TypeScript + Vite
 
-This is a clone of the [yourserved.com](https://yourserved.com) website built with Next.js. The site is fully static and can be deployed to various platforms such as Cloudflare Pages, Vercel, and Netlify.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Local Development
+Currently, two official plugins are available:
 
-```bash
-# Install dependencies
-bun install
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-# Start development server
-bun run dev
+## Expanding the ESLint configuration
 
-# Build the site
-bun run build
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-## Deployment Instructions
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-### Cloudflare Pages
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-1. Log in to your Cloudflare dashboard
-2. Go to Workers & Pages > Create application > Pages
-3. Connect your GitHub repository
-4. Configure the build settings:
-   - Framework preset: Next.js
-   - Build command: `bun run build`
-   - Build output directory: `out`
-5. Set environment variables if needed
-6. Deploy
-
-### Vercel
-
-1. Log in to your Vercel dashboard
-2. Import your GitHub repository
-3. The build settings should be automatically detected
-4. Deploy
-
-### Netlify
-
-1. Log in to your Netlify dashboard
-2. Add new site > Import an existing project
-3. Connect to your GitHub repository
-4. Configure the build settings:
-   - Build command: `bun run build`
-   - Publish directory: `out`
-5. Deploy
-
-## Static Export
-
-The site is configured to use static export mode in Next.js, making it compatible with all static hosting providers. The build output is in the `out` directory.
-
-## Project Structure
-
-- `/src/app` - App router pages and layouts
-- `/public/images` - Static images
-- `/src/components` - React components
-- `/src/components/layout` - Layout components like header and footer
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
