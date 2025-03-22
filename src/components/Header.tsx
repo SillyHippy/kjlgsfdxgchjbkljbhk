@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
-    <header id="main-header" className="bg-black py-4">
+    <header 
+      id="main-header" 
+      className={`bg-black py-4 fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'shadow-lg' : ''
+      }`}
+    >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="logo_container">
           <Link to="/">
@@ -17,7 +32,9 @@ const Header: React.FC = () => {
               src="/images/logo.png"
               alt="Wehmeyer Process Service, Inc. 918-638-2837"
               id="logo"
-              className="h-16 sm:h-20"
+              className={`transition-all duration-300 ${
+                isScrolled ? 'h-12 sm:h-16' : 'h-16 sm:h-20'
+              }`}
             />
           </Link>
         </div>
@@ -52,7 +69,7 @@ const Header: React.FC = () => {
             </button>
 
             {mobileMenuOpen && (
-              <ul id="mobile_menu" className="bg-white absolute left-0 right-0 top-20 p-4 shadow-md z-50">
+              <ul id="mobile_menu" className="bg-white absolute left-0 right-0 top-full p-4 shadow-md z-50">
                 <li className="menu-item py-2 border-b">
                   <Link to="/" className="text-black" onClick={() => setMobileMenuOpen(false)}>Home</Link>
                 </li>
