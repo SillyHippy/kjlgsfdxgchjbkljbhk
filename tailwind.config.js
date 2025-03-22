@@ -21,11 +21,11 @@ module.exports = {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: '#188ab6', // blue used in the website
+          DEFAULT: '#188ab6', // Blue color from the website
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: '#252529', // dark color used for text
+          DEFAULT: '#f5f5f5', // Light grey background
           foreground: "hsl(var(--secondary-foreground))",
         },
         muted: {
@@ -33,7 +33,7 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: '#989b9f', // accent color used in text
+          DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
@@ -60,9 +60,10 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        light: '#f4f4f4', // light background color
-        dark: '#111112', // dark background color
-        'blue-ribbon': '#43a1cd', // another blue shade used in the site
+        darkBg: '#111112', // Dark background
+        footerBg: '#000000', // Footer background
+        textDark: '#252529', // Text dark color
+        textLight: '#989b9f', // Text light color
       },
       keyframes: {
         "accordion-down": {
@@ -102,12 +103,6 @@ module.exports = {
           xl: '1280px',
           '2xl': '1536px',
         },
-      },
-      fontFamily: {
-        'open-sans': ['Open Sans', 'sans-serif'],
-      },
-      backgroundImage: {
-        'hero-pattern': "url('/images/hero-image.jpeg')",
       },
     },
   },

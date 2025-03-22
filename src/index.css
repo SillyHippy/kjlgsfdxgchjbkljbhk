@@ -1,78 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: 'Open Sans', sans-serif;
-    @apply text-secondary;
-  }
-
-  body {
-    @apply bg-white;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold;
-  }
-
-  h1 {
-    @apply text-3xl md:text-4xl;
-  }
-
-  h2 {
-    @apply text-2xl md:text-3xl;
-  }
-
-  h3 {
-    @apply text-xl md:text-2xl;
-  }
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer components {
-  .container {
-    @apply mx-auto px-4 max-w-7xl;
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.callnow_area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2996c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 10px 0;
+  z-index: 100;
+  text-align: center;
+}
+
+.callnow_area a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Add more custom classes as needed */
+.mm-home-box img {
+  display: block;
+  margin: 0 auto 1rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.mm-home-box h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Footer styles */
+#footer-bottom {
+  padding: 15px 0;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Navigation styles */
+#top-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#top-menu li {
+  margin-right: 20px;
+}
+
+#top-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#top-menu li a:hover {
+  color: #188ab6;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  #top-menu {
+    display: none;
   }
 
-  .btn {
-    @apply inline-block px-6 py-3 font-semibold transition-colors duration-300;
-  }
-
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-opacity-90;
-  }
-
-  .call-now-btn {
-    @apply fixed bottom-0 left-0 right-0 bg-primary text-white text-center py-3 md:hidden z-50;
-  }
-
-  .nav-link {
-    @apply px-4 py-2 hover:text-primary transition-colors duration-300;
-  }
-
-  .nav-link-active {
-    @apply text-primary;
-  }
-
-  .section {
-    @apply py-12;
-  }
-
-  .service-box {
-    @apply text-center p-4 mb-8;
-  }
-
-  .service-box h3 {
-    @apply mb-2;
-  }
-
-  .service-box p {
-    @apply text-accent;
-  }
-
-  .footer {
-    @apply bg-dark text-white py-4;
+  #et_mobile_nav_menu {
+    display: block;
   }
 }
