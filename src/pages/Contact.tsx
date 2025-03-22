@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,15 +8,20 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaAnswer, setCaptchaAnswer] = useState('');
 
-  const captchaInfo = {
-    firstDigit: 4,
-    secondDigit: 14,
-    sum: 18,
-  };
+  // Generate random numbers for captcha
+  const captchaInfo = useMemo(() => {
+    const firstDigit = Math.floor(Math.random() * 10); // 0-9
+    const secondDigit = Math.floor(Math.random() * 10); // 0-9
+    return {
+      firstDigit,
+      secondDigit,
+      sum: firstDigit + secondDigit,
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!form.current) return;
 
     // Validate captcha
@@ -69,11 +74,11 @@ const Contact: React.FC = () => {
                 <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="user_name" className="block text-gray-700 mb-2">Name</label>
+                      <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
                       <input
                         type="text"
-                        id="user_name"
-                        name="user_name"
+                        id="name"
+                        name="name"
                         placeholder="Name"
                         className="w-full p-3 border border-gray-300 rounded"
                         required
@@ -81,11 +86,11 @@ const Contact: React.FC = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="user_email" className="block text-gray-700 mb-2">Email Address</label>
+                      <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
                       <input
                         type="email"
-                        id="user_email"
-                        name="user_email"
+                        id="email"
+                        name="email"
                         placeholder="Email Address"
                         className="w-full p-3 border border-gray-300 rounded"
                         required
