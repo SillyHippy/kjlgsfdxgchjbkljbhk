@@ -1,40 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    captcha: '',
-  });
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaAnswer, setCaptchaAnswer] = useState('');
 
-  const [captchaInfo] = useState({
+  const captchaInfo = {
     firstDigit: 4,
     secondDigit: 14,
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    sum: 18,
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send the form data to a server
-    // For this clone, we'll just log it to the console
-    console.log('Form submitted:', formData);
-    alert('Form submitted successfully!');
+    
+    if (!form.current) return;
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-      captcha: '',
-    });
+    // Validate captcha
+    if (parseInt(captchaAnswer) !== captchaInfo.sum) {
+      toast.error('Incorrect captcha answer. Please try again.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await emailjs.sendForm(
+        'testing', // Replace with your EmailJS service ID
+        'template_tz9jwdk', // Replace with your EmailJS template ID
+        form.current,
+        'hZtaqkmyCC0G8fVje' // Replace with your EmailJS public key
+      );
+
+      if (result.text === 'OK') {
+        toast.success('Message sent successfully!');
+        form.current.reset();
+        setCaptchaAnswer('');
+      }
+    } catch (error) {
+      toast.error('Failed to send message. Please try again later.');
+      console.error('EmailJS error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -55,16 +66,14 @@ const Contact: React.FC = () => {
               <div className="md:col-span-2">
                 <h1 className="text-2xl font-bold mb-6">Get In Touch</h1>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
+                      <label htmlFor="user_name" className="block text-gray-700 mb-2">Name</label>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
+                        id="user_name"
+                        name="user_name"
                         placeholder="Name"
                         className="w-full p-3 border border-gray-300 rounded"
                         required
@@ -72,13 +81,11 @@ const Contact: React.FC = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
+                      <label htmlFor="user_email" className="block text-gray-700 mb-2">Email Address</label>
                       <input
                         type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
+                        id="user_email"
+                        name="user_email"
                         placeholder="Email Address"
                         className="w-full p-3 border border-gray-300 rounded"
                         required
@@ -91,8 +98,6 @@ const Contact: React.FC = () => {
                     <textarea
                       id="message"
                       name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
                       placeholder="Message"
                       rows={6}
                       className="w-full p-3 border border-gray-300 rounded"
@@ -105,9 +110,8 @@ const Contact: React.FC = () => {
                       <span className="mr-2">{captchaInfo.firstDigit} + {captchaInfo.secondDigit} =</span>
                       <input
                         type="text"
-                        name="captcha"
-                        value={formData.captcha}
-                        onChange={handleInputChange}
+                        value={captchaAnswer}
+                        onChange={(e) => setCaptchaAnswer(e.target.value)}
                         className="w-16 p-2 border border-gray-300 rounded"
                         required
                       />
@@ -115,9 +119,12 @@ const Contact: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="bg-primary text-white py-2 px-6 rounded hover:bg-blue-700 transition-colors"
+                      disabled={isSubmitting}
+                      className={`bg-primary text-white py-2 px-6 rounded hover:bg-blue-700 transition-colors ${
+                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
                     >
-                      Submit
+                      {isSubmitting ? 'Sending...' : 'Submit'}
                     </button>
                   </div>
                 </form>
@@ -141,6 +148,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" />
     </article>
   );
 };
