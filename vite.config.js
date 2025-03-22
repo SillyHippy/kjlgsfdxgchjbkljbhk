@@ -7,4 +7,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
   },
+  build: {
+    // Reduce chunk size warnings
+    chunkSizeWarningLimit: 1000,
+    // Ensure compatibility with Cloudflare Pages
+    target: 'es2015',
+  }
 })

@@ -1,0 +1,16 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output_directory": "dist",
+    "environment": {
+      "NODE_VERSION": "16"
+    }
+  },
+  "routes": [
+    {
+      "pattern": "/*",
+      "script": null,
+      "serve": "/index.html"
+    }
+  ]
+}
