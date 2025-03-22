@@ -22,22 +22,18 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ]
-    },
-    "noErrorTruncation": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false
+    }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "out/types/**/*.ts"
+    "next-env.d.ts",
+    "build/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,11 +1,15 @@
+[images]
+  remote_images = [
+    "https://ext.same-assets.com/*"
+  ]
+
 [build]
-  command = "npm run build"
-  publish = "out"
+  command = "bun run build"
+  publish = ".next"
 
 [build.environment]
+  NEXT_PUBLIC_SITE_URL = "https://yourserved-clone.netlify.app"
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  NEXT_PUBLIC_BASE_URL = "/"
-  NODE_VERSION = "20"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

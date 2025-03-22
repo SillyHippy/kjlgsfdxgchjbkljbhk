@@ -1,19 +1,12 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
-import { ClientBody } from "./ClientBody";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import CallNowButton from "../components/CallNowButton";
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-open-sans",
-});
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import MobileCallButton from "@/components/MobileCallButton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
-  title: "Wehmeyer Process Service, Inc. | 918-638-2837",
+  title: "Wehmeyer Process Service, Inc. 918-638-2837",
   description: "Wehmeyer Process Service, Inc. is a licensed Tulsa, OK process service agency serving clients nationwide since 1985.",
 };
 
@@ -22,17 +15,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // This prevents caching to help with hydration issues
+  noStore();
+
   return (
-    <html lang="en" className="h-full">
-      <body className={`${openSans.className} h-full bg-gray-50`}>
-        <div id="page-container" className="min-h-screen flex flex-col">
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <div id="page-container">
           <Header />
-          <main id="main-content" className="flex-grow">
-            <ClientBody>{children}</ClientBody>
-          </main>
-          <Footer />
-          <CallNowButton />
+          <div id="et-main-area">
+            <div id="main-content">
+              {children}
+            </div>
+            <Footer />
+          </div>
         </div>
+        <MobileCallButton />
       </body>
     </html>
   );
